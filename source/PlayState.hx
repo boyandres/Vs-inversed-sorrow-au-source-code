@@ -42,7 +42,6 @@ import lime.media.AudioManager;
 import openfl.Lib;
 import Section.SwagSection;
 import Song.SongData;
-import WiggleEffect.WiggleEffectType;
 import flixel.FlxBasic;
 import flixel.FlxCamera;
 import flixel.FlxG;
@@ -225,8 +224,6 @@ class PlayState extends MusicBeatState
 	public var currentSection:SwagSection;
 
 	var fc:Bool = true;
-
-	var wiggleShit:WiggleEffect = new WiggleEffect();
 
 	var talking:Bool = true;
 
@@ -2187,12 +2184,6 @@ class PlayState extends MusicBeatState
 			luaModchart.setVar('cameraZoom', FlxG.camera.zoom);
 
 			luaModchart.executeState('update', [elapsed]);
-
-			for (key => value in luaModchart.luaWiggles)
-			{
-				trace('wiggle le gaming');
-				value.update(elapsed);
-			}
 
 			PlayStateChangeables.useDownscroll = luaModchart.getVar("downscroll", "bool");
 
