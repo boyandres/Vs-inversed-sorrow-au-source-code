@@ -394,6 +394,8 @@ class ModchartState
 		lua = null;
 	}
 
+	public var luaWiggles:Map<String, WiggleEffect> = new Map<String, WiggleEffect>();
+
 	// LUA SHIT
 
 	function new(?isStoryMode = true)
@@ -490,9 +492,29 @@ class ModchartState
 
 		Lua_helper.add_callback(lua, "createWiggle", function(freq:Float, amplitude:Float, speed:Float)
 		{
+			var wiggle = new WiggleEffect();
+			wiggle.waveAmplitude = amplitude;
+			wiggle.waveSpeed = speed;
+			wiggle.waveFrequency = freq;
+
 			var id = Lambda.count(luaWiggles) + 1 + "";
 
+			luaWiggles.set(id, wiggle);
 			return id;
+		});
+
+		Lua_helper.add_callback(lua, "setWiggleTime", function(wiggleId:String, time:Float)
+		{
+			var wiggle = luaWiggles.get(wiggleId);
+
+			wiggle.shader.uTime.value = [time];
+		});
+
+		Lua_helper.add_callback(lua, "setWiggleAmplitude", function(wiggleId:String, amp:Float)
+		{
+			var wiggle = luaWiggles.get(wiggleId);
+
+			wiggle.waveAmplitude = amp;
 		});
 
 		Lua_helper.add_callback(lua, "setStrumlineY", function(y:Float)
