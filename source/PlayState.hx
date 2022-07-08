@@ -1123,7 +1123,6 @@ class PlayState extends MusicBeatState
 
 	var startTimer:FlxTimer;
 	var perfectMode:Bool = false;
-	var luaWiggles:Array<WiggleEffect> = [];
 
 	#if FEATURE_LUAMODCHART
 	public static var luaModchart:ModchartState = null;
@@ -4437,7 +4436,6 @@ class PlayState extends MusicBeatState
 				dad.dance(forcedToIdle, currentSection.CPUAltAnim);
 		}
 		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);
-		wiggleShit.update(Conductor.crochet);
 
 		if (FlxG.save.data.camzoom && songMultiplier == 1)
 		{
