@@ -21,18 +21,21 @@ using StringTools;
 
 class StoryMenuState extends MusicBeatState
 {
+	static inline final OLIVER = 'oliver';
+
+	static inline final GOLEM = 'Golem';
+
+	static inline final BF = 'bf';
+
 	var scoreText:FlxText;
 
 	static function weekData():Array<Dynamic>
 	{
 		return [
 			['tutorial'],
-			['bopeebo', 'fresh', 'dadbattle'],
-			['spookeez', 'south', "monster"],
-			['pico', 'philly', "blammed"],
-			['satin-panties', "high", "milf"],
-			['cocoa', 'eggnog', 'winter-horrorland'],
-			['senpai', 'roses', 'thorns']
+			['Yıldız', 'Portal', 'Hana'],
+			['Kyokuro y azuma', 'Oliver', "Golem"],
+			['Komori ', 'philly', "blammed"],
 		];
 	}
 
@@ -40,15 +43,7 @@ class StoryMenuState extends MusicBeatState
 
 	public static var weekUnlocked:Array<Bool> = [];
 
-	var weekCharacters:Array<Dynamic> = [
-		['', 'bf', 'gf'],
-		['dad', 'bf', 'gf'],
-		['spooky', 'bf', 'gf'],
-		['pico', 'bf', 'gf'],
-		['mom', 'bf', 'gf'],
-		['parents-christmas', 'bf', 'gf'],
-		['senpai', 'bf', 'gf']
-	];
+	var weekCharacters:Array<Dynamic> = [['', BF, 'gf'], ['dad', BF, 'gf'], ['spooky', BF, 'gf'], ['pico', BF, 'gf'],];
 
 	var weekNames:Array<String> = CoolUtil.coolTextFile(Paths.txt('data/weekNames'));
 
